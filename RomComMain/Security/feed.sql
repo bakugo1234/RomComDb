@@ -1,0 +1,4 @@
+CREATE SCHEMA [feed]
+    AUTHORIZATION [dbo];
+GO
+

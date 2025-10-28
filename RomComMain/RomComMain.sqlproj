@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>RomComMain</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{b2c3d4e5-f6a7-4b5c-9d1e-234567890abc}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>RomComMain</RootNamespace>
+    <AssemblyName>RomComMain</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="user\" />
+    <Folder Include="user\Tables\" />
+    <Folder Include="user\Stored Procedures\" />
+    <Folder Include="post\" />
+    <Folder Include="post\Tables\" />
+    <Folder Include="post\Stored Procedures\" />
+    <Folder Include="comment\" />
+    <Folder Include="comment\Tables\" />
+    <Folder Include="comment\Stored Procedures\" />
+    <Folder Include="message\" />
+    <Folder Include="message\Tables\" />
+    <Folder Include="message\Stored Procedures\" />
+    <Folder Include="friendship\" />
+    <Folder Include="friendship\Tables\" />
+    <Folder Include="friendship\Stored Procedures\" />
+    <Folder Include="notification\" />
+    <Folder Include="notification\Tables\" />
+    <Folder Include="notification\Stored Procedures\" />
+    <Folder Include="group\" />
+    <Folder Include="group\Tables\" />
+    <Folder Include="group\Stored Procedures\" />
+    <Folder Include="feed\" />
+    <Folder Include="feed\Stored Procedures\" />
+    <Folder Include="feed\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\User Defined Types\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\user.sql" />
+    <Build Include="Security\post.sql" />
+    <Build Include="Security\comment.sql" />
+    <Build Include="Security\message.sql" />
+    <Build Include="Security\friendship.sql" />
+    <Build Include="Security\notification.sql" />
+    <Build Include="Security\group.sql" />
+    <Build Include="Security\feed.sql" />
+    <Build Include="user\Tables\tbl_userProfiles.sql" />
+    <Build Include="user\Tables\tbl_userSettings.sql" />
+    <Build Include="user\Stored Procedures\sp_User_GetProfile.sql" />
+    <Build Include="user\Stored Procedures\sp_User_UpdateProfile.sql" />
+    <Build Include="post\Tables\tbl_posts.sql" />
+    <Build Include="post\Tables\tbl_postMedia.sql" />
+    <Build Include="post\Tables\tbl_postLikes.sql" />
+    <Build Include="post\Stored Procedures\sp_Post_Create.sql" />
+    <Build Include="post\Stored Procedures\sp_Post_GetById.sql" />
+    <Build Include="post\Stored Procedures\sp_Post_GetByUser.sql" />
+    <Build Include="post\Stored Procedures\sp_Post_Delete.sql" />
+    <Build Include="post\Stored Procedures\sp_Post_Like.sql" />
+    <Build Include="post\Stored Procedures\sp_Post_Unlike.sql" />
+    <Build Include="comment\Tables\tbl_comments.sql" />
+    <Build Include="comment\Tables\tbl_commentLikes.sql" />
+    <Build Include="comment\Stored Procedures\sp_Comment_Create.sql" />
+    <Build Include="comment\Stored Procedures\sp_Comment_GetByPost.sql" />
+    <Build Include="comment\Stored Procedures\sp_Comment_Delete.sql" />
+    <Build Include="message\Tables\tbl_messages.sql" />
+    <Build Include="message\Tables\tbl_messageThreads.sql" />
+    <Build Include="message\Stored Procedures\sp_Message_Send.sql" />
+    <Build Include="message\Stored Procedures\sp_Message_GetThreads.sql" />
+    <Build Include="message\Stored Procedures\sp_Message_GetByThread.sql" />
+    <Build Include="message\Stored Procedures\sp_Message_MarkAsRead.sql" />
+    <Build Include="friendship\Tables\tbl_friendships.sql" />
+    <Build Include="friendship\Stored Procedures\sp_Friendship_SendRequest.sql" />
+    <Build Include="friendship\Stored Procedures\sp_Friendship_AcceptRequest.sql" />
+    <Build Include="friendship\Stored Procedures\sp_Friendship_RejectRequest.sql" />
+    <Build Include="friendship\Stored Procedures\sp_Friendship_GetFriends.sql" />
+    <Build Include="friendship\Stored Procedures\sp_Friendship_GetPendingRequests.sql" />
+    <Build Include="notification\Tables\tbl_notifications.sql" />
+    <Build Include="notification\Stored Procedures\sp_Notification_Create.sql" />
+    <Build Include="notification\Stored Procedures\sp_Notification_GetByUser.sql" />
+    <Build Include="notification\Stored Procedures\sp_Notification_MarkAsRead.sql" />
+    <Build Include="group\Tables\tbl_groups.sql" />
+    <Build Include="group\Tables\tbl_groupMembers.sql" />
+    <Build Include="group\Stored Procedures\sp_Group_Create.sql" />
+    <Build Include="group\Stored Procedures\sp_Group_GetById.sql" />
+    <Build Include="group\Stored Procedures\sp_Group_AddMember.sql" />
+    <Build Include="feed\Views\vw_UserFeed.sql" />
+    <Build Include="feed\Stored Procedures\sp_Feed_GetUserFeed.sql" />
+    <Build Include="dbo\Functions\func_SplitString.sql" />
+    <Build Include="dbo\User Defined Types\tvp_IntList.sql" />
+    <Build Include="dbo\User Defined Types\tvp_StringList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RomComMain.dev.publish.xml" />
+    <None Include="RomComMain.prod.publish.xml" />
+  </ItemGroup>
+</Project>
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>RomComMaster</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{a1b2c3d4-e5f6-4a5b-8c9d-1234567890ab}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>RomComMaster</RootNamespace>
+    <AssemblyName>RomComMaster</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="auth\" />
+    <Folder Include="auth\Tables\" />
+    <Folder Include="auth\Stored Procedures\" />
+    <Folder Include="logger\" />
+    <Folder Include="logger\Tables\" />
+    <Folder Include="logger\Stored Procedures\" />
+    <Folder Include="admin\" />
+    <Folder Include="admin\Tables\" />
+    <Folder Include="admin\Stored Procedures\" />
+    <Folder Include="app\" />
+    <Folder Include="app\Tables\" />
+    <Folder Include="app\Stored Procedures\" />
+    <Folder Include="auditLog\" />
+    <Folder Include="auditLog\Tables\" />
+    <Folder Include="auditLog\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\User Defined Types\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\auth.sql" />
+    <Build Include="Security\logger.sql" />
+    <Build Include="Security\admin.sql" />
+    <Build Include="Security\app.sql" />
+    <Build Include="Security\auditLog.sql" />
+    <Build Include="auth\Tables\tbl_users.sql" />
+    <Build Include="auth\Tables\tbl_roles.sql" />
+    <Build Include="auth\Tables\tbl_refreshTokens.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_ValidateUser.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_GetUserById.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_GetUserByUserName.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_CreateUser.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_UpdatePassword.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_UpdateLastLogin.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_GetPasswordHash.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_CreateRefreshToken.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_GetRefreshToken.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_InvalidateRefreshToken.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_InvalidateAllUserRefreshTokens.sql" />
+    <Build Include="auth\Stored Procedures\sp_Auth_CleanupExpiredTokens.sql" />
+    <Build Include="logger\Tables\tbl_logs.sql" />
+    <Build Include="logger\Stored Procedures\sp_Logger_InsertLog.sql" />
+    <Build Include="logger\Stored Procedures\sp_Logger_GetLogs.sql" />
+    <Build Include="auditLog\Tables\tbl_auditLogs.sql" />
+    <Build Include="auditLog\Stored Procedures\sp_AuditLog_Insert.sql" />
+    <Build Include="auditLog\Stored Procedures\sp_AuditLog_GetByUser.sql" />
+    <Build Include="app\Tables\tbl_applications.sql" />
+    <Build Include="app\Tables\tbl_applicationCredentials.sql" />
+    <Build Include="app\Stored Procedures\sp_App_GetCredentials.sql" />
+    <Build Include="dbo\Functions\func_SplitString.sql" />
+    <Build Include="dbo\User Defined Types\tvp_IntList.sql" />
+    <Build Include="dbo\User Defined Types\tvp_StringList.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="RomComMaster.dev.publish.xml" />
+    <None Include="RomComMaster.prod.publish.xml" />
+  </ItemGroup>
+</Project>
+

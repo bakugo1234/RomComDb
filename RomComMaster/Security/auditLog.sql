@@ -1,0 +1,4 @@
+CREATE SCHEMA [auditLog]
+    AUTHORIZATION [dbo];
+GO
+
