@@ -1,13 +1,9 @@
-CREATE PROCEDURE [comment].[sp_Comment_GetByPost]
-    @PostId INT,
-    @CurrentUserId INT,
-    @PageNumber INT = 1,
-    @PageSize INT = 50
+CREATE PROCEDURE [comment].[sp_Comment_GetById]
+    @CommentId INT,
+    @CurrentUserId INT
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    DECLARE @Offset INT = (@PageNumber - 1) * @PageSize;
 
     SELECT
         c.CommentId,
@@ -26,20 +22,8 @@ BEGIN
     INNER JOIN [RomComMaster].[auth].[tbl_users] u ON c.UserId = u.UserId
     LEFT JOIN [user].[tbl_userProfiles] up ON c.UserId = up.UserId
     LEFT JOIN [comment].[tbl_commentLikes] cl ON c.CommentId = cl.CommentId AND cl.UserId = @CurrentUserId
-    WHERE c.PostId = @PostId
-        AND c.IsActive = 1
-        AND u.IsActive = 1
-    ORDER BY c.CreatedDate DESC
-    OFFSET @Offset ROWS
-    FETCH NEXT @PageSize ROWS ONLY;
-
-    -- Return total count
-    SELECT COUNT(*) AS TotalCount
-    FROM [comment].[tbl_comments] c
-    INNER JOIN [RomComMaster].[auth].[tbl_users] u ON c.UserId = u.UserId
-    WHERE c.PostId = @PostId
+    WHERE c.CommentId = @CommentId
         AND c.IsActive = 1
         AND u.IsActive = 1;
 END
 GO
-
